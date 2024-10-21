@@ -85,14 +85,3 @@ class PriorityQueue<T> {
 }
 
 export { PriorityQueue }
-
-const pq = new PriorityQueue<string>("MIN_HEAP")
-pq.push("bro", 1)
-pq.push("foo", 2)
-pq.push("bar", 5)
-pq.push("dummy", 4)
-pq.push("wololo", 2)
-
-while (pq.length() > 0) {
-	console.log(pq.pop())
-}
