@@ -12,20 +12,20 @@ class MaxHeap {
 		}
 	}
 	private heapDown = (idx: number) => {
-		let smallest_child_idx = 2 * idx + 1
-		if (smallest_child_idx >= this.heap.length) return
+		let biggest_child_idx = 2 * idx + 1
+		if (biggest_child_idx >= this.heap.length) return
 		if (
 			2 * idx + 2 < this.heap.length &&
-			this.heap[smallest_child_idx] < this.heap[2 * idx + 2]
+			this.heap[biggest_child_idx] < this.heap[2 * idx + 2]
 		) {
-			smallest_child_idx = 2 * idx + 2
+			biggest_child_idx = 2 * idx + 2
 		}
-		if (this.heap[idx] < this.heap[smallest_child_idx]) {
-			;[this.heap[idx], this.heap[smallest_child_idx]] = [
-				this.heap[smallest_child_idx],
+		if (this.heap[idx] < this.heap[biggest_child_idx]) {
+			;[this.heap[idx], this.heap[biggest_child_idx]] = [
+				this.heap[biggest_child_idx],
 				this.heap[idx],
 			]
-			this.heapDown(smallest_child_idx)
+			this.heapDown(biggest_child_idx)
 		}
 	}
 	top = () => {
