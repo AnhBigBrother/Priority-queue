@@ -1,28 +1,32 @@
-## Priority queue data structure in TypeScript and JavaScript  
+## heap/priority_queue in typescript  
 
-Useful utility class for solving heap/priority_queue problems.  
-
-- push(): push number into queue.                           // O(logn)  
-- pop(): put the last (biggest) element out of the queue.   // O(1)  
-- toArray(): convert queue into an array.                   // O(n)  
-- top(): get the last (biggest) number in the queue.        // O(1)  
-- front(): get the first (smallest) number in the queue.    // O(1)  
-- length(): get the length of the queue.                    // O(1)  
+- push(val: number): push number into the heap.                                     // O(logn)  
+- pop(): put the first (max in MaxHeap | min in MinHeap) number out of the heap.    // O(logn)  
+- top(): get the first (max in MaxHeap | min in MinHeap) number in the heap.        // O(1)  
+- length(): get the length of the heap.                                                                 // O(1)  
+- updateByIndex(idx: number, val: number): update the element at index "idx" to value "val"             // O(logn)  
+- updateValue(old_val: number, new_val: number): update first element equal to "old_val" to "new_val"   // O(nlogn)  
 
 ```
-import PriorityQueue from './__PriorityQueue';  
+import {MinHeap} from './_heap';  
 
-const myPQueue = new PriorityQueue()
-myPQueue.push(1, 4, 5, 3, 0, 2, 8, -1, -7);
-console.log('myPQueue:', myPQueue.toArray());    // myPQueue: [-7, -1, 0, 1, 2, 3,  4, 5, 8]
-console.log('length:', myPQueue.length());       // length: 9
-console.log('front:', myPQueue.front());         // front: -7
-console.log('top:', myPQueue.top());             // top: 8
+const pq = new MinHeap()         // pq: []  
+pq.push(10)  
+pq.push(2)  
+pq.push(3)  
+pq.push(15)  
+pq.push(0)   
+pq.push(11)  
+pq.push(22)  
+pq.push(1)                       // pq: [0, 1, 2, 3, 10, 11, 15, 22]  
+pq.pop()                         // pq: [1, 2, 3, 10, 11, 15, 22]  
 
-myPQueue.pop();
-myPQueue.pop();
-console.log(myPQueue.toArray());                 // myPQueue: [-7, -1, 0, 1, 2,  3, 4]
-myPQueue.push(3);
-console.log(myPQueue.toArray());                 // myPQueue: [-7, -1, 0, 1, 2,  3, 3, 4]
+
+pq.updateValue(22, 9)            // pq: [1, 2, 3, 9, 10, 11, 15]  
+
+while (pq.length() > 0) {  
+	console.log(pq.pop() + " ")    // 1 2 3 9 10 11 15  
+}  
+
 
 ```
