@@ -14,7 +14,7 @@
 ``` typescript
 import {MinHeap} from './_heap';  
 
-const h = new MinHeap()         // h: []  
+const h = new MinHeap()         // h.heap: []  
 h.push(10)  
 h.push(2)  
 h.push(3)  
@@ -22,11 +22,11 @@ h.push(15)
 h.push(0)   
 h.push(11)  
 h.push(22)  
-h.push(1)                       // h: [0, 1, 2, 3, 10, 11, 15, 22]  
-h.pop()                         // h: [1, 2, 3, 10, 11, 15, 22]  
+h.push(1)                       // h.heap: [0, 1, 3, 2, 10, 11, 22, 15]  
+h.pop()                         // h.heap: [1, 2, 3, 15, 10, 11, 22]  
 
 
-h.updateByValue(22, 9)            // h: [1, 2, 3, 9, 10, 11, 15]  
+h.updateByValue(22, 9)            // h.heap: [1, 2, 3, 15, 10, 11, 9]  
 
 while (h.length() > 0) {  
   console.log(h.pop())         
