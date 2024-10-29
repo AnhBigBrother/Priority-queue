@@ -138,7 +138,7 @@ class MinHeap {
 			this.heapDown(idx)
 		}
 	}
-	updateValue = (old_val: number, new_val: number) => {
+	updateByValue = (old_val: number, new_val: number) => {
 		for (let i = 0; i < this.heap.length; i++) {
 			if (this.heap[i] === old_val) {
 				this.updateByIndex(i, new_val)

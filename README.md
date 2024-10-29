@@ -2,12 +2,12 @@
 
 | Method                          | Description                                                                             | Time complexity |
 |-------------------------------- | --------------------------------------------------------------------------------------- | --------------- |
-| push(item)                      | push item into the heap.                                                                | O(logn)         |
+| push()                          | push item into the heap.                                                                | O(logn)         |
 | pop()                           | put the first (max priority in MaxHeap / min priority in MinHeap) item out of the heap. | O(logn)         |
 | top()                           | get the first (max priority in MaxHeap / min priority in MinHeap) item in the heap.     | O(1)            |
 | length()                        | get the length of the heap.                                                             | O(1)            |
-| updateByIndex(idx, item)        | update the element at index "idx".                                                      | O(logn)         |
-| updateValue(old_item, new_item) | update first element equal to "old_item" to "new_item" (only in MaxHeap or MinHeap).    | O(nlogn)        |
+| updateByIndex()                 | update the element at a specified index of the heap.                                    | O(logn)         |
+| updateByValue()                 | update the first element in the heap with the value "old_val" to "new_val".             | O(nlogn)        |
 
 **heap:**
 
@@ -26,7 +26,7 @@ h.push(1)                       // h: [0, 1, 2, 3, 10, 11, 15, 22]
 h.pop()                         // h: [1, 2, 3, 10, 11, 15, 22]  
 
 
-h.updateValue(22, 9)            // h: [1, 2, 3, 9, 10, 11, 15]  
+h.updateByValue(22, 9)            // h: [1, 2, 3, 9, 10, 11, 15]  
 
 while (h.length() > 0) {  
   console.log(h.pop())         
@@ -47,21 +47,23 @@ while (h.length() > 0) {
 ``` typescript
 import {PriorityQueue} from './_priority_queue';  
 
-const pq = new PriorityQueue<string>("MIN_HEAP")
+const pq = new PriorityQueue((x, y) => x - y) // Max_Queue
 pq.push("bro", 1)
 pq.push("foo", 2)
 pq.push("bar", 5)
 pq.push("dummy", 4)
-pq.push("wololo", 2)
+pq.push("wol", 2)
+
+pq.updateByValue("wol", "wololo", 3)
 
 while (pq.length() > 0) {
   console.log(pq.pop())
-}  
+}
 /* output: 
-{ value: 'bro', priority: 1 }
-{ value: 'wololo', priority: 2 }
-{ value: 'foo', priority: 2 }
-{ value: 'dummy', priority: 4 }
 { value: 'bar', priority: 5 }
+{ value: 'dummy', priority: 4 }
+{ value: 'wololo', priority: 3 }
+{ value: 'foo', priority: 2 }
+{ value: 'bro', priority: 1 }
 */
 ```
