@@ -1,4 +1,8 @@
-# heap/priority_queue in typescript  
+# heap/priority_queue
+
+Heap & priority queue implementation in TypeScript.
+
+## Usage
 
 | Method                          | Description                                                                             | Time complexity |
 |-------------------------------- | --------------------------------------------------------------------------------------- | --------------- |
@@ -8,6 +12,8 @@
 | length()                        | get the length of the heap.                                                             | O(1)            |
 | updateByIndex()                 | update the element at a specified index of the heap.                                    | O(logn)         |
 | updateByValue()                 | update the first element in the heap with the value "old_val" to "new_val".             | O(nlogn)        |
+
+## Example
 
 **heap:**
 
@@ -47,7 +53,7 @@ while (h.length() > 0) {
 ``` typescript
 import {PriorityQueue} from './_priority_queue';  
 
-const pq = new PriorityQueue((x, y) => x - y) // Max_Queue
+const pq = new PriorityQueue<string>((x, y) => x - y) // Max_Queue
 pq.push("bro", 1)
 pq.push("foo", 2)
 pq.push("bar", 5)
